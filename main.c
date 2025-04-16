@@ -52,7 +52,7 @@ void menu() {
     printf("========================================\n");
 }
 
-void tampilkan_rekap(Produk *produk, int jumlah_produk, int total_bayar, int total_diskon) {
+void tampilkan_rekap(Produk *produk, int jumlah_produk, int total_bayar, int total_diskon, int pilihan_user) {
     int i;
     int tagihan = total_bayar - total_diskon;
     int nomor = 1;
@@ -61,6 +61,7 @@ void tampilkan_rekap(Produk *produk, int jumlah_produk, int total_bayar, int tot
     qsort(produk_urut, jumlah_produk, sizeof(Produk), bandingkan_produk);
 
     printf("=========================================================================\n");
+    printf("Input pilihan yang Anda inginkan : %d\n", pilihan_user);
     printf("                           Rekap Pesanan Barang                          \n");
     printf("=========================================================================\n");
     printf("| %-1s | %-3s | %-16s | %-10s | %-10s | %-9s |\n", "No", "Jumlah", "Nama Barang", "Harga", "Total Harga", "Diskon");
@@ -216,7 +217,7 @@ int main() {
             system("cls");
             hitung_total(daftar_produk, jumlah_produk, &total_bayar, &total_diskon);
             int tagihan = total_bayar - total_diskon;
-            tampilkan_rekap(daftar_produk, jumlah_produk, total_bayar, total_diskon);
+            tampilkan_rekap(daftar_produk, jumlah_produk, total_bayar, total_diskon, pilihan);
 
             printf("\nTotal tagihan Anda: Rp.%d\n", tagihan);
             do {
@@ -245,4 +246,3 @@ int main() {
 
     return 0;
 }
-
